@@ -62,6 +62,12 @@ Deep CNN architectures significantly outperformed the ANN baseline across all me
 - TensorFlow / Keras 
 - Pretrained CNN architectures: EfficientNetB0, MobileNetV2, DenseNet121, ResNet50, VGG16
 
+ ## Limitations & Future Improvements
+
+- The dataset used ("equal-and-augmented") was pre-augmented before download, meaning our validation split may contain near-duplicate images of training samples (augmented copies of the same original scan). This could mean real-world accuracy on genuinely unseen MRI scans is somewhat lower than the reported ~89% for MobileNetV2.
+- **Next step:** split the original (non-augmented) images into train/val/test first, then apply augmentation only to the training set — this would give a cleaner, leakage-free measure of generalization.
+- Despite this, the relative ranking of models (ANN << VGG16 < ResNet50 < EfficientNetB0 ≈ MobileNetV2 < DenseNet121) is still meaningful, since all models were evaluated under identical conditions — the comparison between architectures remains valid even if the absolute accuracy numbers carry some optimism.
+
 ## References
 
 - Multi-Modal Diagnosis of Alzheimer's Disease Using Interpretable Graph Convolutional Networks
